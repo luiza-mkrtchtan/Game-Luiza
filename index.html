@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D LIEPĀJA LABYRINTH - LUIZA'S REALM</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&display=swap">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="world"></div>
+        
+        <!-- HUD -->
+        <div id="hud">
+            <div class="hud-item"><span id="txtCoins">Coins</span>: <span id="coinCount">0</span>/11</div>
+            <div class="hud-item"><span id="txtKeys">Keys</span>: <span id="keyCount">0</span>/9</div>
+        </div>
+
+        <!-- Language Selector UI -->
+        <div id="langSelector">
+            <button onclick="setLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="setLanguage('hy')" class="lang-btn">ՀԱՅ</button>
+            <button onclick="setLanguage('lv')" class="lang-btn">LV</button>
+        </div>
+        
+        <!-- Menu 1 -->
+        <div id="menu1" class="menu">
+            <h1 class="game-title" id="mTitle">LIEPĀJA: THE CITY OF WINDS</h1>
+            <div id="button1" class="button">
+                <p id="btnStart">Start Game</p>
+            </div>
+            <div id="button2" class="button">
+                <p id="btnInst">Instructions</p>
+            </div>
+        </div>
+        
+        <!-- Menu 2 (Instructions) -->
+        <div id="menu2" class="menu">
+            <div class="instruction-box">
+                <strong id="instTitle">INSTRUCTIONS</strong>
+                <p id="iW">W / ↑ - Forward</p>
+                <p id="iS">S / ↓ - Backward</p>
+                <p id="iA">A / ← - Left</p>
+                <p id="iD">D / → - Right</p>
+                <p id="iSpace">SPACE - Jump Up</p>
+                <p id="iR">R - Reset Position</p>
+                <div class="alert-text" id="iAlert">Explore the Liepāja labyrinth, collect keys, study the landmarks and open the gate!</div>
+            </div>
+            <div id="button3" class="button">
+                <p id="btnBack">Back</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="artInfoModal" class="quiz-modal-overlay" style="display: none;"></div>
+    <div id="quizModal" class="quiz-modal-overlay" style="display: none;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

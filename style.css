@@ -1,0 +1,344 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #050302;
+    font-family: 'Cinzel', Georgia, serif; 
+    overflow: hidden;
+    color: #e3d5ca;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+#container {
+    position: relative;
+    width: 1200px;
+    height: 800px;
+    border: 4px double #b58d3d;
+    perspective: 700px;
+    overflow: hidden; 
+    background-color: #030305; 
+    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.95);
+    box-sizing: border-box;
+}
+
+#world {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+
+.square {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+}
+
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    background: rgba(10, 6, 4, 0.9);
+    border: 1px solid #8c6d31;
+    padding: 10px 15px;
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.hud-item {
+    font-size: 1.1rem;
+    color: #ffb703;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #000;
+}
+
+#langSelector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 150;
+    display: flex;
+    gap: 6px;
+}
+
+.lang-btn {
+    background: #1c130d;
+    border: 1px solid #b58d3d;
+    color: #ffb703;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.lang-btn:hover {
+    background: #3a1307;
+    border-color: #d64513;
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px;
+    background: radial-gradient(circle, rgba(30,18,10,0.96) 0%, rgba(8,5,3,0.99) 100%);
+    text-align: center;
+    z-index: 100; 
+    transition: opacity 0.4s ease-in-out;
+}
+
+#menu2 { display: none; }
+
+.game-title {
+    font-size: 2.8rem;
+    color: #d64513;
+    text-shadow: 0 0 20px rgba(214, 69, 19, 0.8), 2px 2px 4px #000;
+    margin-bottom: 40px;
+    letter-spacing: 3px;
+    font-weight: 900;
+}
+
+.instruction-box {
+    background: rgba(18, 12, 8, 0.9);
+    border: 2px solid #8c6d31;
+    padding: 25px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    max-width: 500px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.instruction-box strong {
+    font-size: 1.8rem;
+    color: #d64513; 
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.instruction-box p {
+    line-height: 1.5;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: #e3d5ca;
+    margin: 6px 0;
+}
+
+.alert-text {
+    margin-top: 15px;
+    color: #ffb703;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.button {
+    background: #1c130d; 
+    border: 2px solid #8c6d31; 
+    padding: 14px 35px;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 100%; 
+    max-width: 280px;
+    box-sizing: border-box;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.button p {
+    margin: 0;
+    color: #b58d3d; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.button:hover {
+    background: #3a1307; 
+    border-color: #d64513; 
+    box-shadow: 0 0 20px rgba(214, 69, 19, 0.6);
+    transform: translateY(-2px); 
+}
+
+.button:hover p {
+    color: #ffb703; 
+}
+
+.quiz-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(3, 3, 5, 0.92);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.quiz-card {
+    background: #120c08;
+    border: 3px solid #b58d3d;
+    padding: 35px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(181, 141, 61, 0.4);
+}
+
+.quiz-heading {
+    color: #d64513;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.art-title {
+    color: #ffb703;
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.art-author {
+    font-style: italic;
+    color: #b58d3d;
+    margin-bottom: 12px;
+}
+
+.art-desc {
+    line-height: 1.5;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.quiz-question-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.quiz-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quiz-option-btn {
+    background: #1c130d;
+    border: 2px solid #8c6d31;
+    color: #e3d5ca;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.quiz-option-btn:hover {
+    background: #3a1307;
+    border-color: #ffb703;
+    color: #ffb703;
+}
+
+.victory-panel {
+    background: #120c08;
+    border: 3px solid #b58d3d;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.victory-title {
+    font-size: 2.2rem;
+    color: #d64513;
+    margin-bottom: 12px;
+}
+
+.victory-text {
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.victory-subtitle {
+    color: #ffb703;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.victory-divider {
+    border: 0;
+    height: 1px;
+    background: #8c6d31;
+    margin: 15px 0;
+}
+
+.victory-btn {
+    background: #d64513;
+    border: 2px solid #ffb703;
+    color: #fff;
+    padding: 10px 25px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    margin-top: 12px;
+}
+
+.victory-btn:hover {
+    background: #ffb703;
+    color: #050302;
+}
+
+.social-links-box {
+    margin-top: 12px;
+    font-size: 1rem;
+}
+
+.social-link {
+    color: #ffb703;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+#minimap {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 2px solid #b58d3d;
+    border-radius: 4px;
+    background: rgba(10, 6, 4, 0.85);
+    display: none;
+    z-index: 50;
+}
